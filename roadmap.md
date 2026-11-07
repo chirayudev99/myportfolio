@@ -1,0 +1,3 @@
+- [ ] Rebuild the portfolio as recruiter and client/MVP views, preserving the supplied layout and content references.
+- [ ] Add an accessible view switcher, requested portfolio interactions, and a clear available-for-projects status.
+- [ ] Verify both views and key controls on desktop and phone; record results and any blocked items.
