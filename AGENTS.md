@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Portfolio structure
+- Keep recruiter and client/MVP experiences as separate TanStack routes (`/` and `/hire`) with shared portfolio navigation; the two audiences need distinct content and metadata.
+- Keep R3F hero artwork isolated in a small component and constrain its DPR; this preserves the interactive 3D intent without letting scene code spread through page content.
