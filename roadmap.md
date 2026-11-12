@@ -1,3 +1,5 @@
-- [x] Rebuild the portfolio as recruiter and client/MVP views, preserving the supplied layout and content references.
-- [x] Add an accessible view switcher, requested portfolio interactions, and a clear available-for-projects status.
-- [x] Verify both views and key controls on desktop and phone; record results and any blocked items.
+- [ ] Replace the dual-view portfolio with one unified Senior Full-Stack Engineer & MVP Builder experience; keep `/hire` as a redirect.
+- [ ] Showcase all six requested projects with business outcomes, engineering details, technology tags, and verified demo/repository links.
+- [ ] Rebuild skills and experience as resume-grounded bento modules, include all tools, certifications, and stated impact metrics.
+- [ ] Add a subtle radial-fade grid, scroll/hover motion, retain the interactive hero sculpture, and add an ambient contact particle scene.
+- [ ] Verify the unified page, project links, resume download, and motion/canvas presentation at desktop and mobile sizes.
