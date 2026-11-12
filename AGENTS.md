@@ -32,3 +32,4 @@ use the editor.
 ## Portfolio structure
 - Keep recruiter and client/MVP experiences as separate TanStack routes (`/` and `/hire`) with shared portfolio navigation; the two audiences need distinct content and metadata.
 - Keep R3F hero artwork isolated in a small component and constrain its DPR; this preserves the interactive 3D intent without letting scene code spread through page content.
+- Keep audience-specific page composition in separate route views and share data-driven portfolio sections; this maintains distinct recruiter/client stories without duplicating project and skills content.
