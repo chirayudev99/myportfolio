@@ -6,9 +6,17 @@ export const Route = createFileRoute("/hire")({
   head: () => ({
     meta: [
       { title: "Hire Chirayu — MVP & Product Engineering" },
-      { name: "description", content: "Build and launch a polished, production-ready MVP with Chirayu in 3–4 weeks." },
+      {
+        name: "description",
+        content:
+          "Product engineering for founders and teams: thoughtful interfaces, dependable architecture, and full-stack delivery from discovery to launch.",
+      },
       { property: "og:title", content: "Hire Chirayu — MVP & Product Engineering" },
-      { property: "og:description", content: "From first sketch to first customer: thoughtful design and full-stack MVP delivery." },
+      {
+        property: "og:description",
+        content:
+          "From first sketch to first customer: thoughtful design and full-stack MVP delivery.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -6,9 +6,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Chirayu — Senior Full-Stack Engineer" },
-      { name: "description", content: "Chirayu is a senior full-stack engineer building scalable, high-performance product experiences." },
+      {
+        name: "description",
+        content:
+          "Senior Full-Stack Engineer with 5+ years building web applications across frontend architecture, performance optimization, and end-to-end feature delivery.",
+      },
       { property: "og:title", content: "Chirayu — Senior Full-Stack Engineer" },
-      { property: "og:description", content: "Scalable architecture, faster interfaces, and dependable full-stack delivery." },
+      {
+        property: "og:description",
+        content: "Scalable architecture, faster interfaces, and dependable full-stack delivery.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -63,8 +63,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: #09090b;
+  --foreground: #f4f4f5;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -200,3 +200,16 @@
   --color-toastify-toast-background: var(--toastify-toast-background);
 }
 /* site-import tokens: end */
+
+:root {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --site-import-background: #09090b;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #09090b;
+}

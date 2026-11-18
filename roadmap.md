@@ -1,5 +1,0 @@
-- [ ] Preserve separate recruiter (`/`) and client/MVP (`/hire`) experiences with distinct page narratives.
-- [ ] Showcase all six requested projects with business outcomes, engineering details, technology tags, and verified demo/repository links.
-- [ ] Rebuild skills and experience as resume-grounded bento modules, include all tools, certifications, and stated impact metrics.
-- [ ] Add a subtle radial-fade grid, scroll/hover motion, retain the interactive hero sculpture, and add an ambient contact particle scene.
-- [ ] Verify the unified page, project links, resume download, and motion/canvas presentation at desktop and mobile sizes.
