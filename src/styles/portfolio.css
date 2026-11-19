@@ -1748,13 +1748,13 @@ body {
 
 .trust-strip strong {
   color: var(--heading);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 650;
 }
 
 .trust-strip span {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .services-section {

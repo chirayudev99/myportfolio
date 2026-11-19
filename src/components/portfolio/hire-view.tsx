@@ -162,7 +162,7 @@ useEffect(() => {
                 WhatsApp direct <ArrowUpRight size={15} />
               </motion.a>
             </motion.div>
-            {/* <motion.div className="trust-strip" variants={heroRevealItem}>
+            <motion.div className="trust-strip" variants={heroRevealItem}>
               <div>
                 <strong>15+</strong>
                 <span>MVPs delivered</span>
@@ -175,7 +175,7 @@ useEffect(() => {
                 <strong>Full-stack + GenAI</strong>
                 <span>One product partner</span>
               </div>
-            </motion.div> */}
+            </motion.div>
             {/* <section className="proof-section content-width" aria-label="Engineering impact">
       {metrics.map((metric) => (
         <div className="proof-item" key={metric.value}>
@@ -239,14 +239,14 @@ useEffect(() => {
         </section>
       </div>
 
-      <section className="proof-section content-width" aria-label="Engineering impact">
+      {/* <section className="proof-section content-width" aria-label="Engineering impact">
         {metrics.map((metric) => (
           <div className="proof-item" key={metric.value}>
             <strong>{metric.value}</strong>
             <span>{metric.label}</span>
           </div>
         ))}
-      </section>
+      </section> */}
 
       <section className="services-section content-width" id="services">
         <motion.div
