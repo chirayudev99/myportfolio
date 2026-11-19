@@ -1,12 +1,15 @@
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteNav } from "@/components/portfolio/site-nav";
 import { ProjectsShowcase } from "@/components/portfolio/projects-showcase";
 import { SpotlightCard } from "@/components/portfolio/tilt-card";
 import { contact } from "@/components/portfolio/portfolio-data";
 import { ContactForm } from "@/components/portfolio/contact-form";
+import { PopupModal } from "react-calendly";
+
+
 
 const ContactStarsCanvas = lazy(() =>
   import("@/components/portfolio/contact-stars-canvas").then((module) => ({
@@ -81,6 +84,19 @@ export function HireView() {
   const [activeStep, setActiveStep] = useState(0);
   const currentStep = roadmap[activeStep];
 
+  // Inside your component:
+const [calendlyOpen, setCalendlyOpen] = useState(false);
+const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+
+useEffect(() => {
+  setRootElement(document.body);
+}, []);
+
+  const metrics = [
+    { value: "6+", label: "Years building & shipping production software" },
+    { value: "15+", label: "Production apps & startup MVPs delivered" },
+    { value: "30–50%", label: "Faster load & Lighthouse performance gains" },
+  ];
   return (
     <motion.main
       className="portfolio-page hire-page"
@@ -114,15 +130,27 @@ export function HireView() {
               launch.
             </motion.p>
             <motion.div className="hero-actions" variants={heroRevealItem}>
-              <Button asChild className="action-primary">
-                <motion.a
-                  href={`mailto:${contact.email}?subject=${encodeURIComponent("Book a 15-Min Scope Call")}`}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  Book a 15-Min Scope Call <ArrowRight size={16} />
-                </motion.a>
-              </Button>
+              <>
+                <Button asChild className="action-dark">
+                  <motion.button
+                    type="button"
+                    onClick={() => setCalendlyOpen(true)}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    Book a 15-Min Scope Call <ArrowRight size={16} />
+                  </motion.button>
+                </Button>
+
+                {rootElement && (
+                  <PopupModal
+                    url="https://calendly.com/singhchirayu22/30min"
+                    open={calendlyOpen}
+                    onModalClose={() => setCalendlyOpen(false)}
+                    rootElement={rootElement}
+                  />
+                )}
+              </>
               <motion.a
                 className="text-link light-link"
                 href={`https://wa.me/${contact.phone.replace(/\D/g, "")}`}
@@ -134,7 +162,7 @@ export function HireView() {
                 WhatsApp direct <ArrowUpRight size={15} />
               </motion.a>
             </motion.div>
-            <motion.div className="trust-strip" variants={heroRevealItem}>
+            {/* <motion.div className="trust-strip" variants={heroRevealItem}>
               <div>
                 <strong>15+</strong>
                 <span>MVPs delivered</span>
@@ -147,7 +175,15 @@ export function HireView() {
                 <strong>Full-stack + GenAI</strong>
                 <span>One product partner</span>
               </div>
-            </motion.div>
+            </motion.div> */}
+            {/* <section className="proof-section content-width" aria-label="Engineering impact">
+      {metrics.map((metric) => (
+        <div className="proof-item" key={metric.value}>
+          <strong>{metric.value}</strong>
+          <span>{metric.label}</span>
+        </div>
+      ))}
+    </section> */}
           </motion.div>
           <motion.div
             className="hire-hero-art"
@@ -202,6 +238,15 @@ export function HireView() {
           </motion.div>
         </section>
       </div>
+
+      <section className="proof-section content-width" aria-label="Engineering impact">
+        {metrics.map((metric) => (
+          <div className="proof-item" key={metric.value}>
+            <strong>{metric.value}</strong>
+            <span>{metric.label}</span>
+          </div>
+        ))}
+      </section>
 
       <section className="services-section content-width" id="services">
         <motion.div
