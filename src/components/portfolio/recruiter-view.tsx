@@ -1,6 +1,6 @@
-import { AnimatePresence, motion, useScroll, useSpring, type Variants } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
-import { lazy, Suspense, useRef, useState } from "react";
+import { lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { ImpactBento, SkillsBento } from "@/components/portfolio/skills-bento";
 import { SiteNav } from "@/components/portfolio/site-nav";
@@ -35,15 +35,6 @@ const revealItem: Variants = {
 };
 
 export function RecruiterView() {
-  const [selectedRole, setSelectedRole] = useState(0);
-  const timeline = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: timeline,
-    offset: ["start 0.7", "end 0.35"],
-  });
-  const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 24, mass: 0.2 });
-  const role = experience[selectedRole];
-
   return (
     <motion.main
       className="portfolio-page recruiter-page"
@@ -122,7 +113,7 @@ export function RecruiterView() {
                 <Linkedin size={17} />
               </motion.a>
               <motion.a
-                href='#contact'
+                href="#contact"
                 aria-label="Email Chirayu"
                 whileHover={{ y: -3, scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
@@ -144,7 +135,6 @@ export function RecruiterView() {
         <section
           className="experience-section content-width"
           id="experience"
-          ref={timeline}
           aria-labelledby="experience-title"
         >
           <div className="experience-heading">
@@ -166,57 +156,35 @@ export function RecruiterView() {
               </p>
             </motion.div>
           </div>
-          <div className="career-timeline">
-            <div className="career-selector" aria-label="Career timeline">
-              <span className="career-spine" aria-hidden="true">
-                <motion.span className="career-progress" style={{ scaleY: progress }} />
-              </span>
-              {experience.map((item, index) => (
-                <button
-                  aria-pressed={selectedRole === index}
-                  className="career-role"
-                  key={`${item.company}-${item.date}`}
-                  onClick={() => setSelectedRole(index)}
-                  type="button"
-                >
-                  <span className="career-role-dot" />
-                  <span>
-                    <strong>{item.role}</strong>
-                    <span className="career-role-company">{item.company}</span>
-                    <small>{item.date}</small>
-                  </span>
-                </button>
-              ))}
-            </div>
-            <SpotlightCard className="career-stage" aria-live="polite">
-              <AnimatePresence mode="wait" initial={false}>
-                {role && (
-                  <motion.article
-                    className="career-detail"
-                    key={role.company}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12 }}
-                    transition={{ duration: 0.24 }}
-                  >
-                    <p className="career-date">{role.date}</p>
-                    <h3>{role.role}</h3>
-                    <p className="experience-company">{role.company}</p>
-                    <p className="experience-detail">{role.detail}</p>
-                    <ul className="experience-highlights">
-                      {role.highlights.map((highlight) => (
-                        <li key={highlight}>{highlight}</li>
-                      ))}
-                    </ul>
-                    <div className="career-stack" aria-label="Technology and domain experience">
-                      {role.stack.map((item) => (
-                        <span key={item}>{item}</span>
-                      ))}
-                    </div>
-                  </motion.article>
-                )}
-              </AnimatePresence>
-            </SpotlightCard>
+          <div className="career-list" aria-label="Career timeline">
+            {experience.map((role, index) => (
+              <motion.article
+                className="career-entry"
+                key={`${role.company}-${role.date}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{ duration: 0.45, delay: Math.min(index * 0.05, 0.25) }}
+              >
+                <span className="career-entry-dot" aria-hidden="true" />
+                <SpotlightCard className="career-stage">
+                  <p className="career-date">{role.date}</p>
+                  <h3>{role.role}</h3>
+                  <p className="experience-company">{role.company}</p>
+                  <p className="experience-detail">{role.detail}</p>
+                  <ul className="experience-highlights">
+                    {role.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <div className="career-stack" aria-label="Technology and domain experience">
+                    {role.stack.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </SpotlightCard>
+              </motion.article>
+            ))}
           </div>
         </section>
       </div>
